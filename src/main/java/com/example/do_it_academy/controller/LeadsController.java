@@ -19,17 +19,17 @@ public class LeadsController {
 
     @GetMapping("/leads")
     @ResponseBody
-    public List<Leads> getInstructors(@RequestParam(required = false) String first_name, @RequestParam(required = false) String last_name, @RequestParam(required = false) String phone) {
+    public List<Leads> getLeads(@RequestParam(required = false) String first_name, @RequestParam(required = false) String last_name, @RequestParam(required = false) String phone) {
         return service.getLeads(first_name, last_name, phone);
     }
 
     @PutMapping("/leads")
-    public void addInstructors(@RequestBody Leads leads) {
+    public void addLeads(@RequestBody Leads leads) {
         service.saveLeads(leads);
     }
 
     @DeleteMapping("/leads/{id}")
-    public void removeInstructors(@PathVariable Integer id) {
+    public void removeLeads(@PathVariable Integer id) {
         service.removeLeads(id);
     }
 
@@ -44,7 +44,7 @@ public class LeadsController {
         service.addPreferences(id_lead, preferences);
     }
 
-    @DeleteMapping("leads/{id_lead}/preferences")
+    @DeleteMapping("leads/{id_lead}/{id_course}/preferences")
     public void removePreferences(@PathVariable Integer id_lead, @PathVariable Integer id_course) {
         service.removePreferences(id_lead, id_course);
     }

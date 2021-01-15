@@ -151,11 +151,11 @@ public class LeadsRepository {
     }
 
 //    remove preferences
-public void removePreferences(Integer id_course, Integer id_lead) {
-    String sql = "delete from preferinces where id_course =:id_course and id_lead =:id_lead";
+public void removePreferences(Integer id_lead, Integer  id_course) {
+    String sql = "delete from preferences where id_lead =:id_lead and id_course =:id_course ";
     MapSqlParameterSource parameterSource = new MapSqlParameterSource()
-            .addValue("id_session", id_course)
-            .addValue("id_learner", id_lead);
+            .addValue("id_lead", id_lead)
+            .addValue("id_course", id_course);
 
     if (jdbcTemplate.update(sql, parameterSource) != 1) {
         throw new RemoveLearnersException();

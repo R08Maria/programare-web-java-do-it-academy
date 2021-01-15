@@ -139,7 +139,7 @@ public class SessionsRepository {
 
         Integer learnersCount = (int) getLearners(id_session).stream().count();
 
-        if(learnersCount>=capacity){
+        if(learnersCount >= capacity){
             throw new FullSessionException();
         }
 
